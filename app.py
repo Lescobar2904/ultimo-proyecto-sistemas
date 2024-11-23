@@ -66,6 +66,29 @@ dD = archivo('data_training.txt')
 aT = archivo('data_test.txt', tiene_etiqueta=False)
 
 # Ejecutar KNN para cada punto de prueba
+print("--------------------------------------------------------------------------------")
+print("--------------------------------------------------------------------------------")
+print("K=2")
+for aTest in aT:
+    prediccion = KNN(dD, aTest,2)
+    print(f"Test: {aTest} -> Predicción: {dLabel[int(prediccion)]}")
+print("--------------------------------------------------------------------------------")
+print("--------------------------------------------------------------------------------")
+print("K=3")
 for aTest in aT:
     prediccion = KNN(dD, aTest)
     print(f"Test: {aTest} -> Predicción: {dLabel[int(prediccion)]}")
+print("--------------------------------------------------------------------------------")
+print("--------------------------------------------------------------------------------")
+print("K=4")
+for aTest in aT:
+    prediccion = KNN(dD, aTest,4)
+    print(f"Test: {aTest} -> Predicción: {dLabel[int(prediccion)]}")
+print("--------------------------------------------------------------------------------")
+print("--------------------------------------------------------------------------------")
+print("K=5")
+for aTest in aT:
+    prediccion = KNN(dD, aTest,5)
+    print(f"Test: {aTest} -> Predicción: {dLabel[int(prediccion)]}")
+print("--------------------------------------------------------------------------------")
+print("--------------------------------------------------------------------------------")
