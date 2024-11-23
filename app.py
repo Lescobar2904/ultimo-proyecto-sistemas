@@ -6,10 +6,9 @@ dLabel = {0: 'Iris-Setosa', 1: 'Iris-Versicolor', 2: 'Iris-Virginica'}
 
 
 # funcion del algoritmo KNN
-def KNN(dData, aTest, K=2):
+def KNN(dData, aTest, K=3):
     # arreglo 
     aD = []
-
 
     for c in dData:
         #-----------------------------------------------------------------------------------------------
@@ -21,16 +20,18 @@ def KNN(dData, aTest, K=2):
         testFeatures = list(map(float, aTest))  # Características del dato de prueba
         #-----------------------------------------------------------------------------------------------
         #-----------------------------------------------------------------------------------------------
-
-
         # Cálculo de la distancia euclidiana
+        # formula = √(∑(Yi- Xj)^2)
         dE = mt.sqrt(sum((dF - tF) ** 2 for dF, tF in zip(dFeatures, testFeatures)))
         # Almacenar la distancia y la etiqueta
         aD.append((dE, c[-1]))
+        #-----------------------------------------------------------------------------------------------
+        #-----------------------------------------------------------------------------------------------
     
     # Ordenar por distancia y seleccionar los K vecinos más cercanos
+    # La funcion sorted ordena los valores de aD 
+    # y ademas deja solo los primeros K elementos (predeterminado 3)
     aD = sorted(aD, key=lambda x: x[0])[:K]
-
     # Contar la frecuencia de cada clase en los K vecinos
     clase_contadores = {}
     for _, clase in aD:
