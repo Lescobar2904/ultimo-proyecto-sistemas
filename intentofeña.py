@@ -24,19 +24,21 @@ def load_data(file_path, has_class=True):
             data.append(values)
     return data
 
-def split_data(data, train_ratio=0.8):
+def split_data(data, train_ratio=0.8, random_seed=42):
     """
-    Dividir los datos en entrenamiento y validación.
+    Dividir los datos en entrenamiento y validación con una semilla fija.
     
     Args:
     - data: Lista de datos con características y etiquetas.
     - train_ratio: Proporción de datos para entrenamiento (entre 0 y 1).
+    - random_seed: Semilla para el generador aleatorio.
     
     Returns:
     - train_data: Datos de entrenamiento.
     - test_data: Datos de validación.
     """
-    random.shuffle(data)
+    random.seed(random_seed)  # Fijar la semilla
+    random.shuffle(data)  # Mezclar datos
     split_index = int(len(data) * train_ratio)
     return data[:split_index], data[split_index:]
 
@@ -111,7 +113,7 @@ test_file = "data_test.txt"
 data = load_data(training_file, has_class=True)
 
 # Dividir datos en 80% entrenamiento y 20% validación
-train_data, validation_data = split_data(data, train_ratio=0.8)
+train_data, validation_data = split_data(data, train_ratio=0.8, random_seed=42)
 
 # Extraer etiquetas reales del conjunto de validación
 validation_features = [x[:-1] for x in validation_data]
