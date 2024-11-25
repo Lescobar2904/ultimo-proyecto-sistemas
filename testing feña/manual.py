@@ -13,7 +13,7 @@ def load_data(file_path, has_labels):
         return data  # Solo características (sin etiquetas)
 
 # Implementación del algoritmo KNN manual
-def KNN(dData, aTest, K=3):
+def KNN(dData, aTest, K):
     X_train, y_train = dData
     distances = []
     for i, x in enumerate(X_train):
@@ -28,7 +28,7 @@ def KNN(dData, aTest, K=3):
 
 # Main
 if __name__ == "__main__":
-    np.random.seed(1)  # Fijar la semilla aleatoria para consistencia
+    np.random.seed(42)  # Fijar la semilla aleatoria para consistencia
 
     # Cargar datos
     X, y = load_data("data_training.txt", has_labels=True)
